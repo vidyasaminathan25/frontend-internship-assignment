@@ -9,11 +9,12 @@ import { debounceTime, filter } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   bookSearch: FormControl;
-
+  value:string="";
   constructor() {
     this.bookSearch = new FormControl('');
-  }
 
+  }
+  
   trendingSubjects: Array<any> = [
     { name: 'JavaScript' },
     { name: 'CSS' },
@@ -29,5 +30,9 @@ export class HomeComponent implements OnInit {
       ).
       subscribe((value: string) => {
       });
+  }
+  searchName(key: any){
+    this.value= key.target.value;
+    console.log(key.target.value)
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { SubjectsService } from '../../core/services/subjects.service';
 import { Book } from 'src/app/core/models/book-response.model';
 
+
 @Component({
   selector: 'front-end-internship-assignment-trending-subjects',
   templateUrl: './trending-subjects.component.html',
@@ -29,11 +30,13 @@ export class TrendingSubjectsComponent implements OnInit {
     });
   }
 
+ 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.subjectName = params.get('name') || '';
       this.isLoading = true;
       this.getAllBooks();
+      
     });
   }
 

@@ -8,8 +8,10 @@
       type="text"
       placeholder="Search Books"
       class="tw-border-0 tw-bg-inherit"
+      (input)="searchName($event)"
     >
   </div>
+  <div><front-end-internship-assignment-search-result [item]="value"></front-end-internship-assignment-search-result></div>
 </div>
 <div class="tw-flex tw-flex-row tw-m-24-px">
   <section class="trending-subjects">
