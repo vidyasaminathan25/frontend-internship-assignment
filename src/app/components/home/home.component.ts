@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, filter } from 'rxjs';
 
+
+
 @Component({
   selector: 'front-end-internship-assignment-home',
   templateUrl: './home.component.html',
@@ -32,7 +34,19 @@ export class HomeComponent implements OnInit {
       });
   }
   searchName(key: any){
+    if(key.target.value){
     this.value= key.target.value;
     console.log(key.target.value)
+    }
+    else{
+      this.value='';
+    }
+   
   }
+
+  clearSearch(){
+    console.log(this.bookSearch);
+    this.bookSearch.reset();
+    this.value='';
+    }
 }

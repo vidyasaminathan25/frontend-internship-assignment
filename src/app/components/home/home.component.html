@@ -10,8 +10,11 @@
       class="tw-border-0 tw-bg-inherit"
       (input)="searchName($event)"
     >
+    <button *ngIf="bookSearch.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
-  <div><front-end-internship-assignment-search-result [item]="value"></front-end-internship-assignment-search-result></div>
+  
 </div>
 <div class="tw-flex tw-flex-row tw-m-24-px">
   <section class="trending-subjects">
@@ -22,4 +25,6 @@
       </li>
     </ul>
   </section>
-</div>
+  <div><front-end-internship-assignment-search-result [item]="value"></front-end-internship-assignment-search-result></div>
+  </div>
+ 

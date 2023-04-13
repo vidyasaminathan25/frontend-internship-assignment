@@ -1,6 +1,15 @@
-<div *ngIf="allBooks.length > 0">
+<mat-spinner *ngIf="isLoading">
+    </mat-spinner>
+<div *ngIf="allBooks.length > 0 && !isLoading" >
   <front-end-internship-assignment-table-view
   [booksList]="allBooks"
   [subjectName]="subjectName"
   ></front-end-internship-assignment-table-view>
+  <div class="example-label">
+    <div class="example-button-row">
+      <button mat-raised-button routerLink="" style=" margin-left: 700px; display: table-cell;
+      font-size: 14px; min-width: 120px;">Back</button>
+    </div>  
+    </div>
 </div>
+
