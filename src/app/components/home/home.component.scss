@@ -1,6 +1,5 @@
 .header {
-  @apply
-  tw-flex
+  @apply tw-flex
   tw-flex-row
   tw-justify-between
   tw-items-center
@@ -11,28 +10,51 @@
 }
 
 .search-button {
-  @apply
-  tw-border 
+  @apply tw-border 
   tw-border-solid 
   tw-border-dark-border
   tw-rounded-4-px
   tw-flex
   tw-justify-center
-  tw-h-60-px
-  tw-w-200-px
+  tw-h-60-px;
+  width: 245px;
 }
 
 .trending-subjects {
-  @apply
-  tw-bg-table-header-bg
+  @apply tw-bg-table-header-bg
   tw-p-12-px
   tw-rounded-4-px
-  tw-shadow-lg
+  tw-shadow-lg;
+  height: fit-content;
+  width: 16%;
 }
 
-.mat-column-year {
-  flex: 0 0 10%;
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: #3f51b5;
+  margin: auto;
 }
-.mat-column-name {
-  flex: 0 0 50%;
+
+.loading {
+  visibility: hidden;
+}
+.not-loading {
+  visibility: visible;
+}
+.button-close {
+  border: none;
+  background: none;
+  padding: 0px;
+}
+.tw-border-0.tw-bg-inherit:focus-visible {
+  outline: none;
+}
+.search-result {
+  width: 84%;
+}
+.error {
+  color: red;
+  text-align: center;
+  p {
+    font-size: 16px;
+  }
 }

@@ -8,23 +8,57 @@
       type="text"
       placeholder="Search Books"
       class="tw-border-0 tw-bg-inherit"
-      (input)="searchName($event)"
+    />
+    <button
+      *ngIf="bookSearch.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clearSearch()"
+      class="button-close"
     >
-    <button *ngIf="bookSearch.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
       <mat-icon>close</mat-icon>
     </button>
   </div>
-  
 </div>
 <div class="tw-flex tw-flex-row tw-m-24-px">
   <section class="trending-subjects">
     <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
     <ul class="tw-list-none tw-pl-0">
-      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
+      <li
+        class="tw-text-16-px tw-cursor-pointer tw-p-12-px"
+        *ngFor="let subject of trendingSubjects"
+        routerLink="/trending-subject/{{ subject.name }}"
+      >
         {{ subject.name }}
       </li>
     </ul>
   </section>
-  <div><front-end-internship-assignment-search-result [item]="value"></front-end-internship-assignment-search-result></div>
-  </div>
- 
+  <section class="search-result">
+    <mat-spinner *ngIf="isLoading; else loadedData"></mat-spinner>
+    <ng-template #loadedData>
+      <div *ngIf="dataSource">
+        <front-end-internship-assignment-table-view
+          [booksList]="dataSource.works"
+        ></front-end-internship-assignment-table-view>
+      </div>
+      <div *ngIf="error" class="error">
+        <p>Sorry for the inconvenience. Please try again after some time.</p>
+      </div>
+    </ng-template>
+    <mat-paginator
+      [ngClass]="
+        isLoading || (!isLoading && !searchKey) || error
+          ? 'loading'
+          : 'not-loading'
+      "
+      #paginator
+      [length]="dataSource?.work_count"
+      [pageSize]="limit"
+      (page)="onPaginateChange($event)"
+      showFirstLastButtons
+      hidePageSize
+    >
+    </mat-paginator>
+  </section>
+</div>
